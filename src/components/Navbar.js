@@ -2,6 +2,7 @@ import React from 'react';
 import { AppBar } from "@material-ui/core";
 import { Toolbar } from "@material-ui/core";
 import { Box } from "@material-ui/core";
+import '../Styles/Navbar.css';
 
 
 function Navbar() {

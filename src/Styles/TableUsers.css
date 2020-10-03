@@ -1,0 +1,20 @@
+.tableUser{
+    width: 620px;
+    margin-top: 50px;
+    margin-left: 30px;
+   
+}
+.container-table{
+    background-color:   #cdffcd !important ; 
+}
+.container-table-user{
+    background-color:   #cdffcd !important ; 
+}
+
+
+.tableSong{
+    width: 620px;
+    float: right;
+    margin-right: 30px;
+    margin-top: -80px;
+}

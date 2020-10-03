@@ -1,13 +1,13 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import Table from './components/Table';
+import TableUsers from './components/TableUsers';
 
 
 function Page() {
   return (
     <div className="App">
       <Navbar/>
-       <Table/>
+       <TableUsers/>
     </div>
   );
 };
