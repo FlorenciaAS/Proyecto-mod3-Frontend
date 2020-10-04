@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
+import Grid from '@material-ui/core/Grid';
 import '../Styles/TableUsers.css';
 const fetch = require('node-fetch');
 
@@ -28,12 +29,14 @@ function TableUsers() {
 
   
   return (
-  <div className='container'>
-    <div className="tableUser">
+    <Box m={3}>
+  <Grid container  spacing={2} className='container'>
+    <Grid item xs={6}   className="tableUser">
         <Box fontFamily="Amaranth"
             fontSize={20}
             align="center"
-            color="#00b38f">
+            color="#00b38f"
+            mb={3}>
             Usuarios
         </Box>
         <TableContainer  className='container-table-user'  component={Paper}>
@@ -52,20 +55,21 @@ function TableUsers() {
               <TableRow key={dataUsers._id} >
                 <TableCell>{dataUsers.name}</TableCell>
                 <TableCell>{dataUsers.lastName}</TableCell>
-                <TableCell>{dataUsers.mail}</TableCell>
-                <TableCell>{dataUsers.age}</TableCell>
+                <TableCell >{dataUsers.mail}</TableCell>
+                <TableCell align="center">{dataUsers.age}</TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-    </div>
+    </Grid>
 
-  <div className="tableSong">
+  <Grid item xs={6} className="tableSong">
       <Box fontFamily="Amaranth"
           fontSize={20}
           align="center"
-          color="#00b38f">
+          color="#00b38f"
+          mb={3}>
           Canciones
       </Box>
 
@@ -80,7 +84,7 @@ function TableUsers() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((users)=> (
+            {users.map(()=> (
               <TableRow key={users._id} >
                 <TableCell component="th" scope="row">
                 
@@ -94,9 +98,10 @@ function TableUsers() {
           </TableBody>
         </Table>
       </TableContainer>
-      </div>
+      </Grid>
       
-  </div>
+  </Grid>
+  </Box>
 
   );
 };
