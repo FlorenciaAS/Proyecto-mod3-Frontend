@@ -7,7 +7,7 @@ function Page() {
   return (
     <div className="App">
       <Navbar/>
-       <TableUsers/>
+      <TableUsers/>
     </div>
   );
 };
