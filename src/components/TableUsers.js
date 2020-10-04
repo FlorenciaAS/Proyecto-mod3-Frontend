@@ -8,29 +8,25 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 import '../Styles/TableUsers.css';
+const fetch = require('node-fetch');
 
 function TableUsers() {
 
   const [users, setUsers] = useState([]);
-  const [songs, setSongs] =useState([]);
+  //const [songs, setSongs] =useState([]);
 
-  const obtenerUsers = async()=>{
-    const response = await fetch("http//localhost:3200/users");
-    const data = await response.json();
-    setUsers(data);
+
+  const obtUsers = async()=>{
+    const response = await fetch("http://localhost:3200/users");
+    const dataUsers = await response.json();
+    setUsers(dataUsers);
   };
 
   useEffect(()=>{
-    obtenerUsers();
-  });
+    obtUsers();
+  }, []);
 
-  const handleClick = async (e,user)=> {
-    e.preventDefault();
-    console.log('se hizo click en el usuario', user);
-
-  };
-
-
+  
   return (
   <div className='container'>
     <div className="tableUser">
@@ -41,7 +37,7 @@ function TableUsers() {
             Usuarios
         </Box>
         <TableContainer  className='container-table-user'  component={Paper}>
-        <Table oneClick={handleClick} aria-label="simple table">
+        <Table  aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Nombre</TableCell>
@@ -50,16 +46,14 @@ function TableUsers() {
               <TableCell>Edad</TableCell>
             </TableRow>
           </TableHead>
+
           <TableBody>
-            {users.map((users)=> (
-              <TableRow key={users._id} >
-                <TableCell component="th" scope="row">
-                
-                </TableCell>
-                <TableCell>{users.name}</TableCell>
-                <TableCell>{users.lastName}</TableCell>
-                <TableCell>{users.mail}</TableCell>
-                <TableCell>{users.age}</TableCell>
+            {users.map((dataUsers)=> (
+              <TableRow key={dataUsers._id} >
+                <TableCell>{dataUsers.name}</TableCell>
+                <TableCell>{dataUsers.lastName}</TableCell>
+                <TableCell>{dataUsers.mail}</TableCell>
+                <TableCell>{dataUsers.age}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -67,7 +61,7 @@ function TableUsers() {
       </TableContainer>
     </div>
 
-    <div className="tableSong">
+  <div className="tableSong">
       <Box fontFamily="Amaranth"
           fontSize={20}
           align="center"
@@ -76,7 +70,7 @@ function TableUsers() {
       </Box>
 
       <TableContainer className='container-table'  component={Paper}>
-        <Table oneClick={handleClick} aria-label="simple table">
+        <Table  aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Nombre</TableCell>

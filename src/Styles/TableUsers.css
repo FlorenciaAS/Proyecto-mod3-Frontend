@@ -15,6 +15,7 @@
 .tableSong{
     width: 620px;
     float: right;
+    float:top;
     margin-right: 30px;
     margin-top: -80px;
 }
