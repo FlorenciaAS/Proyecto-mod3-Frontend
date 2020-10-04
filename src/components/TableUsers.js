@@ -6,12 +6,13 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 import '../Styles/TableUsers.css';
 
 function TableUsers() {
 
   const [users, setUsers] = useState([]);
+  const [songs, setSongs] =useState([]);
 
   const obtenerUsers = async()=>{
     const response = await fetch("http//localhost:3200/users");
@@ -33,64 +34,74 @@ function TableUsers() {
   return (
   <div className='container'>
     <div className="tableUser">
-      <Typography>Usuarios</Typography>
-       <TableContainer  className='container-table-user'  component={Paper}>
-      <Table oneClick={handleClick} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nombre</TableCell>
-            <TableCell align="right">Apellido</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Edad</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((users)=> (
-            <TableRow key={users._id} >
-              <TableCell component="th" scope="row">
-               
-              </TableCell>
-              <TableCell align="right">{users.name}</TableCell>
-              <TableCell align="right">{users.lastName}</TableCell>
-              <TableCell align="right">{users.mail}</TableCell>
-              <TableCell align="right">{users.age}</TableCell>
+        <Box fontFamily="Amaranth"
+            fontSize={20}
+            align="center"
+            color="#00b38f">
+            Usuarios
+        </Box>
+        <TableContainer  className='container-table-user'  component={Paper}>
+        <Table oneClick={handleClick} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Nombre</TableCell>
+              <TableCell>Apellido</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Edad</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  </div>
-
-<div className="tableSong">
-<Typography>Canciones favoritas</Typography>
-
-    <TableContainer className='container-table'  component={Paper}>
-      <Table oneClick={handleClick} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Nombre</TableCell>
-            <TableCell align="right">Album</TableCell>
-            <TableCell align="right">Duracion</TableCell>
-            <TableCell align="right">Artista</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((users)=> (
-            <TableRow key={users._id} >
-              <TableCell component="th" scope="row">
-               
-              </TableCell>
-              <TableCell align="right">{users.name}</TableCell>
-              <TableCell align="right">{users.lastName}</TableCell>
-              <TableCell align="right">{users.mail}</TableCell>
-              <TableCell align="right">{users.age}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {users.map((users)=> (
+              <TableRow key={users._id} >
+                <TableCell component="th" scope="row">
+                
+                </TableCell>
+                <TableCell>{users.name}</TableCell>
+                <TableCell>{users.lastName}</TableCell>
+                <TableCell>{users.mail}</TableCell>
+                <TableCell>{users.age}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
     </div>
-    
+
+    <div className="tableSong">
+      <Box fontFamily="Amaranth"
+          fontSize={20}
+          align="center"
+          color="#00b38f">
+          Canciones
+      </Box>
+
+      <TableContainer className='container-table'  component={Paper}>
+        <Table oneClick={handleClick} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>Nombre</TableCell>
+              <TableCell>Duracion</TableCell>
+              <TableCell>Artista</TableCell>
+              <TableCell>Album</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users.map((users)=> (
+              <TableRow key={users._id} >
+                <TableCell component="th" scope="row">
+                
+                </TableCell>
+                <TableCell>{users.name}</TableCell>
+                <TableCell>{users.lastName}</TableCell>
+                <TableCell>{users.mail}</TableCell>
+                <TableCell>{users.age}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      </div>
+      
   </div>
 
   );
