@@ -19,14 +19,18 @@ function TableUsers() {
 
   const obtUsers = async()=>{
     const response = await fetch("http://localhost:3200/users");
-    const dataUsers = await response.json();
-    setUsers(dataUsers);
+    const data = await response.json();
+    setUsers(data);
   };
 
   useEffect(()=>{
     obtUsers();
   }, []);
 
+   // const handleSongsFav = async function (e, users){
+    // e.preventDefault();
+    // setSongs(users.favoriteSongs);
+    //};
   
   return (
     <Box m={3}>
@@ -51,12 +55,14 @@ function TableUsers() {
           </TableHead>
 
           <TableBody>
-            {users.map((dataUsers)=> (
-              <TableRow key={dataUsers._id} >
-                <TableCell>{dataUsers.name}</TableCell>
-                <TableCell>{dataUsers.lastName}</TableCell>
-                <TableCell >{dataUsers.mail}</TableCell>
-                <TableCell align="center">{dataUsers.age}</TableCell>
+            {users.map((data)=> (
+              <TableRow key={data._id}  
+              //onClick={(e) => handleSongsFav(e,users)}
+               >
+                <TableCell>{data.name}</TableCell>
+                <TableCell>{data.lastName}</TableCell>
+                <TableCell >{data.mail}</TableCell>
+                <TableCell align="center">{data.age}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -84,17 +90,18 @@ function TableUsers() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map(()=> (
-              <TableRow key={users._id} >
+            
+              <TableRow
+              // key={song._id} 
+              >
                 <TableCell component="th" scope="row">
-                
                 </TableCell>
-                <TableCell>{users.name}</TableCell>
-                <TableCell>{users.lastName}</TableCell>
-                <TableCell>{users.mail}</TableCell>
-                <TableCell>{users.age}</TableCell>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
+                <TableCell></TableCell>
               </TableRow>
-            ))}
+            
           </TableBody>
         </Table>
       </TableContainer>
